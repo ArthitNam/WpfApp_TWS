@@ -1,0 +1,130 @@
+﻿<Window x:Name="mainFill_Data" x:Class="WpfApp_TWS.MainFill"
+        xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"    
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp_TWS"
+        mc:Ignorable="d"       
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        
+        
+        
+        Title="MainFill" Height="800" Width="1530" WindowStartupLocation="Manual" Loaded="mainFill_Data_Loaded">
+
+
+    <Grid x:Name="Form_MainFill"  Height="800" ScrollViewer.HorizontalScrollBarVisibility="Auto" Margin="0,0,0,0" ScrollViewer.VerticalScrollBarVisibility="Auto" Loaded="mainFill_Data_Loaded" HorizontalAlignment="Left" Width="1530" >
+
+        
+        <StackPanel x:Name="Fill_Panal" HorizontalAlignment="Left" Height="70" Margin="40,70,0,0" VerticalAlignment="Top" Width="1450" Orientation="Horizontal" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" Grid.ColumnSpan="2">
+            <ComboBox x:Name="comboBox_Select"
+            materialDesign:HintAssist.Hint="เลือกจาก"
+            MinWidth="72"
+            Margin="10,0,0,10"
+            Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontFamily="Serithai" FontSize="14" Height="45" HorizontalAlignment="Left" Width="200" SelectionChanged="comboBox_Select_SelectionChanged">
+                <ComboBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <VirtualizingStackPanel />
+                    </ItemsPanelTemplate>
+                </ComboBox.ItemsPanel>
+
+            </ComboBox>
+            <ComboBox x:Name="comboBox_machineID"
+            materialDesign:HintAssist.Hint="หัวจ่าย"
+            MinWidth="72"
+            Margin="30,0,0,10"
+            Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontFamily="Serithai" FontSize="14" Height="45" HorizontalAlignment="Left" Width="100" SelectionChanged="comboBox_machineID_SelectionChanged">
+                <ComboBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <VirtualizingStackPanel />
+                    </ItemsPanelTemplate>
+                </ComboBox.ItemsPanel>
+                
+            </ComboBox>
+            <ComboBox x:Name="comboBox_standardSize"
+            materialDesign:HintAssist.Hint="ขนาดบรรจุ"
+            MinWidth="72"
+            Margin="30,0,0,10"
+            Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontFamily="Serithai" FontSize="14" Height="45" HorizontalAlignment="Left" Width="100" VerticalAlignment="Center" SelectionChanged="comboBox_standardSize_SelectionChanged">
+                <ComboBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <VirtualizingStackPanel />
+                    </ItemsPanelTemplate>
+                </ComboBox.ItemsPanel>
+                
+            </ComboBox>
+            <ComboBox x:Name="comboBox_status"
+            materialDesign:HintAssist.Hint="สถานะ"
+            MinWidth="72"
+            Margin="30,0,0,10"
+            Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontFamily="Serithai" FontSize="14" Height="45" HorizontalAlignment="Left" Width="230" SelectionChanged="comboBox_status_SelectionChanged">
+                <ComboBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <VirtualizingStackPanel />
+                    </ItemsPanelTemplate>
+                </ComboBox.ItemsPanel>
+               
+            </ComboBox>
+            <ComboBox x:Name="comboBox_User"
+            materialDesign:HintAssist.Hint="พนักงาน"
+            MinWidth="72"
+            Margin="30,0,0,10"
+            Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontFamily="Serithai" FontSize="14" Height="45" HorizontalAlignment="Left" Width="240" SelectionChanged="comboBox_User_SelectionChanged_1">
+                <ComboBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <VirtualizingStackPanel />
+                    </ItemsPanelTemplate>
+                </ComboBox.ItemsPanel>
+                
+            </ComboBox>
+            <Button x:Name="btnReset"
+    Style="{StaticResource MaterialDesignRaisedButton}"
+    Width="100"
+    ToolTip="รีเซ็ตตัวเลือกข้อมูล" FontFamily="Serithai" Margin="30,19,0,19" HorizontalAlignment="Left" Content="รีเซ็ต" Click="btnReset_Click"/>
+        </StackPanel>
+        <Label HorizontalAlignment="Left" VerticalAlignment="Top" Height="60" Width="1450" FontFamily="Serithai" FontSize="20" Margin="0,0,0,0" Grid.ColumnSpan="2"/>
+        <Label Content="ข้อมูลการบรรจุ" HorizontalAlignment="Left" Margin="40,13,0,0" VerticalAlignment="Top" FontFamily="Serithai" FontSize="18" Height="40" Foreground="{DynamicResource {x:Static SystemColors.MenuTextBrushKey}}" Grid.ColumnSpan="2"/>
+        <DataGrid x:Name="dataG_Fill" AutoGenerateColumns="False" ItemsSource="{Binding}" ColumnHeaderHeight="50" HorizontalAlignment="Left" Margin="40,0,0,60" Width="auto" FontSize="13" FontFamily="Roboto" Foreground="Black" TextBlock.TextAlignment="Left" Height="585" VerticalAlignment="Bottom" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" CanUserResizeRows="False" IsReadOnly="True" MinColumnWidth="19" CanUserResizeColumns="False" CanUserSortColumns="False" CanUserReorderColumns="False" AlternationCount="1" Grid.ColumnSpan="2" >
+            <DataGrid.Resources>
+                <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}" >
+                    <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}"/>
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="FontSize" Value="13"/>
+                    <Setter Property="FontFamily" Value="Serithai"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    <Setter Property="BorderThickness" Value="0"/>
+
+                </Style>
+
+            </DataGrid.Resources>
+
+
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="No" Width="65" Header="ลำดับ" Binding="{Binding No}" />
+                <DataGridTextColumn x:Name="DateTime" Width="150" Header="วัน / เวลา" Binding="{Binding DateTime, StringFormat='dd/MM/yyyy HH:mm:ss'}" />
+                <DataGridTextColumn x:Name="machine_id" Width="70" Header="หัวจ่าย" Binding="{Binding machine_id}" />
+                <DataGridTextColumn x:Name="standard_size" Width="80" Header="ขนาดถัง" Binding="{Binding standard_size}" />
+                <DataGridTextColumn x:Name="scale_label" Width="90" Header="นน.ถังเปล่า" Binding="{Binding scale_label}" />
+                <DataGridTextColumn x:Name="scale_tank" Width="85" Header="นน.ถังชั่ง" Binding="{Binding scale_tank}" />
+                <DataGridTextColumn x:Name="scale_after" Width="85" Header="นน. สุทธิ" Binding="{Binding scale_after}" />
+                <DataGridTextColumn x:Name="scale_fill" Width="90" Header="บรรจุ(กก.)" Binding="{Binding scale_fill}" />
+                <DataGridTextColumn x:Name="scale_liter" Width="100" Header="บรรจุ(ลิตร)" Binding="{Binding scale_liter}" />
+                <DataGridTextColumn x:Name="time_count" Width="100" Header="เวลาบรรจุ" Binding="{Binding time_count}" />
+                <DataGridTextColumn x:Name="scale_drif" Width="100" Header="ผลต่าง(กก.)" Binding="{Binding scale_drif}" />
+                <DataGridTextColumn x:Name="status" Width="210" Header="สถานะ" Binding="{Binding status}" />
+                <DataGridTextColumn x:Name="user" Width="210" Header="ชื่อพนักงาน" Binding="{Binding user}" />
+            </DataGrid.Columns>
+
+        </DataGrid>
+        <DockPanel HorizontalAlignment="Left" Height="1" LastChildFill="False" Margin="40,53,0,0" VerticalAlignment="Top" Width="1450" Background="{DynamicResource {x:Static SystemColors.ScrollBarBrushKey}}" Grid.ColumnSpan="2"/>
+    </Grid>
+
+</Window>
+    
