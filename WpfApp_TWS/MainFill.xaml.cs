@@ -18,6 +18,7 @@ using LiveCharts.Defaults;
 using LiveCharts.Wpf;
 using MySql.Data.MySqlClient;
 using System.Data;
+using System.Windows.Controls.Primitives;
 
 namespace WpfApp_TWS
 {
@@ -41,10 +42,17 @@ namespace WpfApp_TWS
         public bool comboBox_User_Changed = false;
         public String name;
         public String id;
+        public DateTime startDate;
+        public DateTime stopDate;
+        public String start;
+        public String stop;
+        public String start_stop;
+        public bool select = false;
 
         public MainFill()
         {
             InitializeComponent();
+            
             comboBox_Select.Items.Add("รายวัน");
             comboBox_Select.Items.Add("รายสัปดาห์");
             comboBox_Select.Items.Add("รายเดือน");
@@ -63,12 +71,19 @@ namespace WpfApp_TWS
             comboBox_Select.Items.Add("ทั้งหมด");
             comboBox_Select.Items.Add("กำหนดเอง");
         }
+        
         private void mainFill_Data_Loaded(object sender, RoutedEventArgs e)
         {
             this.comboBox_Select.SelectedIndex = 0;
         }
         private void comboBox_Select_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if(select == true)
+            {
+                comboBox_Select.Items.Remove(start_stop);
+                select = false;
+            }
+
             if (comboBox_Select.SelectedIndex == comboBox_Select.Items.IndexOf("รายวัน"))
             {
                 sql_Qr = "where datetime like '%" + System.DateTime.Now.ToString("yyyy-MM-dd", new CultureInfo("en-US")) + "%' AND machine_id " + w_machine_id + " AND standard_size " + w_standardSize + " AND status " + w_status + " AND user_id " + w_user_id;
@@ -181,8 +196,30 @@ namespace WpfApp_TWS
                 show_Data();
                 get_combobox_item();
             }
+            else if (comboBox_Select.SelectedIndex == comboBox_Select.Items.IndexOf("กำหนดเอง"))
+            {
+                this.Opacity = 0.5;
+                var pk = new PickerDate();              
+                pk.ShowDialog();
+                this.Opacity = 100;
+                if(pk.cancel==false)
+                {
+                    startDate = Convert.ToDateTime(pk.startDate); // start en
+                    stopDate = Convert.ToDateTime(pk.stopDate);  // stop en  
+                    start = startDate.ToString("yyyy-MM-dd");
+                    stop = stopDate.ToString("yyyy-MM-dd");
+                    start_stop = pk.txt_Start_Date.Text + "  ถึง  " + pk.txt_Stop_Date.Text;
+                    comboBox_Select.Items.Add(start_stop);
+                    comboBox_Select.SelectedIndex = comboBox_Select.Items.IndexOf(start_stop);
+                    sql_Qr = "where datetime BETWEEN" + "'" + start + "'" + "AND" + "'" + stop + "' AND machine_id " + w_machine_id + " AND standard_size " + w_standardSize + " AND status " + w_status + " AND user_id " + w_user_id; ;
+                    sql = "SELECT * FROM filler_log " + sql_Qr;
+                    show_Data();
+                    get_combobox_item();
+                    select = true;
+                }                     
+            }         
         }
-
+        
         private void msgError(String msg)
         {
             MessageBox.Show(msg, "พบปัญหา");
@@ -255,6 +292,10 @@ namespace WpfApp_TWS
                 else if (comboBox_Select.SelectedIndex == comboBox_Select.Items.IndexOf("ทั้งหมด"))
                 {
                     sql_Qr = "WHERE YEAR(datetime) >1 AND machine_id " + w_machine_id + " AND standard_size " + w_standardSize + " AND status " + w_status + " AND user_id " + w_user_id;
+                }
+                else if (comboBox_Select.SelectedIndex == comboBox_Select.Items.IndexOf("กำหนดเอง") || comboBox_Select.SelectedIndex == comboBox_Select.Items.IndexOf(start_stop))
+                {
+                    sql_Qr = "where datetime BETWEEN" + "'" + start + "'" + "AND" + "'" + stop + "' AND machine_id " + w_machine_id + " AND standard_size " + w_standardSize + " AND status " + w_status + " AND user_id " + w_user_id; ;                    
                 }
 
                 sql = "SELECT * FROM filler_log " + sql_Qr;

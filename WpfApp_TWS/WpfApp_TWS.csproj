@@ -93,10 +93,17 @@
       <DependentUpon>Dashbord.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="PickerDate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainFill.xaml.cs">
       <DependentUpon>MainFill.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PickerDate.xaml.cs">
+      <DependentUpon>PickerDate.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

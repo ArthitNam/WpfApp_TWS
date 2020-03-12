@@ -14,11 +14,7 @@
         TextOptions.TextRenderingMode="Auto"        
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        
-        
-        
         Title="MainFill" Height="800" Width="1530" WindowStartupLocation="Manual" Loaded="mainFill_Data_Loaded">
-
 
     <Grid x:Name="Form_MainFill"  Height="800" ScrollViewer.HorizontalScrollBarVisibility="Auto" Margin="0,0,0,0" ScrollViewer.VerticalScrollBarVisibility="Auto" Loaded="mainFill_Data_Loaded" HorizontalAlignment="Left" Width="1530" >
 
@@ -28,7 +24,7 @@
             materialDesign:HintAssist.Hint="เลือกจาก"
             MinWidth="72"
             Margin="10,0,0,10"
-            Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontFamily="Serithai" FontSize="14" Height="45" HorizontalAlignment="Left" Width="200" SelectionChanged="comboBox_Select_SelectionChanged">
+            Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontFamily="Serithai" FontSize="14" Height="45" HorizontalAlignment="Left" Width="220" SelectionChanged="comboBox_Select_SelectionChanged">
                 <ComboBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <VirtualizingStackPanel />
@@ -88,9 +84,18 @@
     Style="{StaticResource MaterialDesignRaisedButton}"
     Width="100"
     ToolTip="รีเซ็ตตัวเลือกข้อมูล" FontFamily="Serithai" Margin="30,19,0,19" HorizontalAlignment="Left" Content="รีเซ็ต" Click="btnReset_Click"/>
+            <materialDesign:DialogHost
+  HorizontalAlignment="Center"
+  VerticalAlignment="Center"
+  IsOpen="{Binding IsSample4DialogOpen}"
+  DialogContent="{Binding Sample4Content}"
+  CloseOnClickAway="True"
+  OverlayBackground="{DynamicResource PrimaryHueDarkBrush}"/>
         </StackPanel>
+        
         <Label HorizontalAlignment="Left" VerticalAlignment="Top" Height="60" Width="1450" FontFamily="Serithai" FontSize="20" Margin="0,0,0,0" Grid.ColumnSpan="2"/>
         <Label Content="ข้อมูลการบรรจุ" HorizontalAlignment="Left" Margin="40,13,0,0" VerticalAlignment="Top" FontFamily="Serithai" FontSize="18" Height="40" Foreground="{DynamicResource {x:Static SystemColors.MenuTextBrushKey}}" Grid.ColumnSpan="2"/>
+        
         <DataGrid x:Name="dataG_Fill" AutoGenerateColumns="False" ItemsSource="{Binding}" ColumnHeaderHeight="50" HorizontalAlignment="Left" Margin="40,0,0,60" Width="auto" FontSize="13" FontFamily="Roboto" Foreground="Black" TextBlock.TextAlignment="Left" Height="585" VerticalAlignment="Bottom" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" CanUserResizeRows="False" IsReadOnly="True" MinColumnWidth="19" CanUserResizeColumns="False" CanUserSortColumns="False" CanUserReorderColumns="False" AlternationCount="1" Grid.ColumnSpan="2" >
             <DataGrid.Resources>
                 <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}" >
@@ -100,12 +105,8 @@
                     <Setter Property="FontFamily" Value="Serithai"/>
                     <Setter Property="HorizontalContentAlignment" Value="Center"/>
                     <Setter Property="BorderThickness" Value="0"/>
-
                 </Style>
-
             </DataGrid.Resources>
-
-
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="No" Width="65" Header="ลำดับ" Binding="{Binding No}" />
                 <DataGridTextColumn x:Name="DateTime" Width="150" Header="วัน / เวลา" Binding="{Binding DateTime, StringFormat='dd/MM/yyyy HH:mm:ss'}" />
@@ -121,9 +122,16 @@
                 <DataGridTextColumn x:Name="status" Width="210" Header="สถานะ" Binding="{Binding status}" />
                 <DataGridTextColumn x:Name="user" Width="210" Header="ชื่อพนักงาน" Binding="{Binding user}" />
             </DataGrid.Columns>
-
         </DataGrid>
         <DockPanel HorizontalAlignment="Left" Height="1" LastChildFill="False" Margin="40,53,0,0" VerticalAlignment="Top" Width="1450" Background="{DynamicResource {x:Static SystemColors.ScrollBarBrushKey}}" Grid.ColumnSpan="2"/>
+        <materialDesign:DialogHost
+  HorizontalAlignment="Center"
+  VerticalAlignment="Center"
+  IsOpen="{Binding IsSample4DialogOpen}"
+  DialogContent="{Binding Sample4Content}"
+  CloseOnClickAway="True"
+  OverlayBackground="{DynamicResource PrimaryHueDarkBrush}"/>
+        
     </Grid>
 
 </Window>
