@@ -12,24 +12,24 @@
         TextElement.FontSize="13"
         TextOptions.TextFormattingMode="Ideal" 
         TextOptions.TextRenderingMode="Auto"        
-        Background="{DynamicResource MaterialDesignPaper}"
+        Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"
         FontFamily="Serithai"
         
-        Height="580" Width="591" ResizeMode="NoResize" WindowStyle="None">
+        Height="580" Width="591" ResizeMode="NoResize" WindowStyle="None" MouseDown="PickerDate1_MouseDown">
 
     <Grid Margin="0,0,0,0">
         <TextBox x:Name="txt_Start_Date"
   materialDesign:HintAssist.Hint="เริ่มต้น"
   Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-            
-  VerticalAlignment="Top" Margin="10,22,0,0"  FontFamily="Serithai" FontSize="14" Height="46" HorizontalAlignment="Left" Width="278" />
-        <Calendar x:Name="Calendar_Start" HorizontalAlignment="Left" Margin="10,78,0,0" VerticalAlignment="Top" FirstDayOfWeek="Monday" xml:lang="th-TH" SelectedDatesChanged="Calendar_Start_SelectedDatesChanged" IsTodayHighlighted="False" SelectionMode="SingleRange" ForceCursor="True" PreviewMouseUp="Calendar_Start_PreviewMouseUp" DisplayDateStart="2020-01-01" DisplayDateEnd="2050-12-31" />
-        <Calendar x:Name="Calendar_Stop" Margin="302,78,0,0" VerticalAlignment="Top" FirstDayOfWeek="Monday" xml:lang="th-TH" SelectedDatesChanged="Calendar_Stop_SelectedDatesChanged" HorizontalAlignment="Left" Width="278" IsTodayHighlighted="False" SelectionMode="SingleRange" ForceCursor="True" PreviewMouseUp="Calendar_Stop_PreviewMouseUp"/>
+  IsReadOnly="True"          
+  VerticalAlignment="Top" Margin="10,22,0,0"  FontFamily="Serithai" FontSize="14" Height="46" HorizontalAlignment="Left" Width="278" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" />
+        <Calendar x:Name="Calendar_Start" HorizontalAlignment="Left" Margin="10,78,0,0" VerticalAlignment="Top" FirstDayOfWeek="Monday" xml:lang="th-TH" SelectedDatesChanged="Calendar_Start_SelectedDatesChanged" IsTodayHighlighted="False" SelectionMode="SingleRange" ForceCursor="True" PreviewMouseUp="Calendar_Start_PreviewMouseUp" DisplayDateStart="2020-01-01" DisplayDateEnd="2050-12-31" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" />
+        <Calendar x:Name="Calendar_Stop" Margin="302,78,0,0" VerticalAlignment="Top" FirstDayOfWeek="Monday" xml:lang="th-TH" SelectedDatesChanged="Calendar_Stop_SelectedDatesChanged" HorizontalAlignment="Left" Width="278" IsTodayHighlighted="False" SelectionMode="SingleRange" ForceCursor="True" PreviewMouseUp="Calendar_Stop_PreviewMouseUp" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}"/>
         <TextBox x:Name="txt_Stop_Date"
             materialDesign:HintAssist.Hint="สิ้นสุด"
             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-            
-            VerticalAlignment="Top" Margin="302,22,0,0"  FontFamily="Serithai" FontSize="14" Height="46" HorizontalAlignment="Left" Width="278" />
+            IsReadOnly="True"
+            VerticalAlignment="Top" Margin="302,22,0,0"  FontFamily="Serithai" FontSize="14" Height="46" HorizontalAlignment="Left" Width="278" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" />
 
         <Button x:Name="btn_Enter"
     Style="{StaticResource MaterialDesignRaisedButton}"

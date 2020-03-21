@@ -1,0 +1,211 @@
+﻿<UserControl x:Name="User_Home" x:Class="WpfApp_TWS.UserControl_Home"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfApp_TWS"
+             mc:Ignorable="d" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+             TextElement.FontWeight="Regular"
+             TextElement.FontSize="13"
+             TextOptions.TextFormattingMode="Ideal" 
+             TextOptions.TextRenderingMode="Auto"        
+             Background="{DynamicResource MaterialDesignPaper}"
+             FontFamily="{DynamicResource MaterialDesignFont}"
+             d:DesignHeight="800" d:DesignWidth="1530" Loaded="User_Home_Loaded" ScrollViewer.HorizontalScrollBarVisibility="Visible">
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+        <Grid x:Name="Form_MainFill"  Margin="0,0,0,0" Loaded="User_Home_Loaded" HorizontalAlignment="Left" VerticalAlignment="Top" Height="800" Width="auto" ScrollViewer.HorizontalScrollBarVisibility="Visible"  >
+            <materialDesign:DialogHost
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                IsOpen="{Binding IsSample4DialogOpen}"
+                DialogContent="{Binding Sample4Content}"
+                CloseOnClickAway="True"
+                OverlayBackground="{DynamicResource PrimaryHueDarkBrush}"/>
+
+            <Label Content="ข้อมูลการบรรจุ" HorizontalAlignment="Left" Margin="30,10,0,0" VerticalAlignment="Top" FontFamily="Serithai" FontSize="18" Height="40"/>
+            <DockPanel Height="1" LastChildFill="False" Margin="30,45,0,0" VerticalAlignment="Top" Background="{DynamicResource {x:Static SystemColors.ScrollBarBrushKey}}"/>
+
+            <StackPanel x:Name="Fill_Panal" Height="70" Margin="30,60,0,0" VerticalAlignment="Top" Orientation="Horizontal" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}">
+                <StackPanel.BitmapEffect>
+                    <DropShadowBitmapEffect  Color="WhiteSmoke" ShadowDepth="1"/>
+                </StackPanel.BitmapEffect>
+                <ComboBox x:Name="comboBox_Select"
+            materialDesign:HintAssist.Hint="เลือกจาก"
+            MinWidth="72"
+            Margin="10,0,0,10"
+            Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontFamily="Serithai" FontSize="14" Height="45" HorizontalAlignment="Left" Width="220" SelectionChanged="comboBox_Select_SelectionChanged">
+                    <ComboBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel />
+                        </ItemsPanelTemplate>
+                    </ComboBox.ItemsPanel>
+
+                </ComboBox>
+                <ComboBox x:Name="comboBox_machineID"
+            materialDesign:HintAssist.Hint="หัวจ่าย"
+            MinWidth="72"
+            Margin="30,0,0,10"
+            Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontFamily="Serithai" FontSize="14" Height="45" HorizontalAlignment="Left" Width="100" SelectionChanged="comboBox_machineID_SelectionChanged">
+                    <ComboBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel />
+                        </ItemsPanelTemplate>
+                    </ComboBox.ItemsPanel>
+
+                </ComboBox>
+                <ComboBox x:Name="comboBox_standardSize"
+            materialDesign:HintAssist.Hint="ขนาดบรรจุ"
+            MinWidth="72"
+            Margin="30,0,0,10"
+            Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontFamily="Serithai" FontSize="14" Height="45" HorizontalAlignment="Left" Width="100" VerticalAlignment="Center" SelectionChanged="comboBox_standardSize_SelectionChanged">
+                    <ComboBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel />
+                        </ItemsPanelTemplate>
+                    </ComboBox.ItemsPanel>
+
+                </ComboBox>
+                <ComboBox x:Name="comboBox_status"
+            materialDesign:HintAssist.Hint="สถานะ"
+            MinWidth="72"
+            Margin="30,0,0,10"
+            Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontFamily="Serithai" FontSize="14" Height="45" HorizontalAlignment="Left" Width="230" SelectionChanged="comboBox_status_SelectionChanged">
+                    <ComboBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel />
+                        </ItemsPanelTemplate>
+                    </ComboBox.ItemsPanel>
+
+                </ComboBox>
+                <ComboBox x:Name="comboBox_User"
+            materialDesign:HintAssist.Hint="พนักงาน"
+            MinWidth="72"
+            Margin="30,0,0,10"
+            Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontFamily="Serithai" FontSize="14" Height="45" HorizontalAlignment="Left" Width="240" SelectionChanged="comboBox_User_SelectionChanged_1">
+                    <ComboBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel />
+                        </ItemsPanelTemplate>
+                    </ComboBox.ItemsPanel>
+
+                </ComboBox>
+                <Button x:Name="btnReset"
+    Style="{StaticResource MaterialDesignRaisedButton}"
+    Width="100"
+    ToolTip="รีเซ็ตตัวเลือกข้อมูล" FontFamily="Serithai" Margin="30,19,0,19" HorizontalAlignment="Left" Content="รีเซ็ต" Click="btnReset_Click"/>
+                <materialDesign:DialogHost
+  HorizontalAlignment="Center"
+  VerticalAlignment="Center"
+  IsOpen="{Binding IsSample4DialogOpen}"
+  DialogContent="{Binding Sample4Content}"
+  CloseOnClickAway="True"
+  OverlayBackground="{DynamicResource PrimaryHueDarkBrush}"/>
+
+                <Button
+  Content="{materialDesign:PackIcon Printer}" Margin="30,19,0,19" 
+  ToolTip="พิมพ์รายงาน" />
+            </StackPanel>
+
+            <DataGrid x:Name="dataG_Fill" AutoGenerateColumns="False" ItemsSource="{Binding}" ColumnHeaderHeight="55" Margin="30,145,0,0" FontSize="13" FontFamily="Serithai" Foreground="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}"  Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" CanUserResizeRows="False" IsReadOnly="True" MinColumnWidth="19" CanUserResizeColumns="False" CanUserSortColumns="False" CanUserReorderColumns="False" AlternationCount="1" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto" RowHeight="35" GridLinesVisibility="Horizontal" ScrollViewer.CanContentScroll="False" Height="521" VerticalAlignment="Top" >
+                <DataGrid.BitmapEffect>
+                    <DropShadowBitmapEffect  Color="WhiteSmoke" ShadowDepth="1"/>
+                </DataGrid.BitmapEffect>
+                <DataGrid.CellStyle>
+                    <Style TargetType="DataGridCell">
+                        <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+                        <Setter Property="FontFamily" Value="Roboto"/>
+                        <Setter Property="FontSize" Value="13"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type DataGridCell}">
+                                    <Grid Background="{TemplateBinding Background}">
+                                        <ContentPresenter VerticalAlignment="Center"/>
+                                    </Grid>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </DataGrid.CellStyle>
+                <DataGrid.Resources>
+                    <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}" >
+                        <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}"/>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="FontSize" Value="14"/>
+                        <Setter Property="FontFamily" Value="Serithai"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        <Setter Property="BorderThickness" Value="0"/>
+                    </Style>
+                    <Style x:Key="DataGridVerticalText" TargetType="TextBlock">
+                        <Setter Property="VerticalAlignment" Value="Center" />
+                    </Style>
+                    <!--<Style TargetType="{x:Type DataGridCell}">
+                        <Setter Property="FontSize" Value="13"/>
+                        <Setter Property="TextBlock.Height" Value="50"/>
+                        <Setter Property="HorizontalAlignment" Value="Stretch"></Setter>
+                        <Setter Property="VerticalAlignment" Value="Stretch"></Setter>
+                        <Setter Property="VerticalContentAlignment" Value="Stretch"></Setter>
+                        <Setter Property="TextBlock.TextAlignment" Value="Center"></Setter>
+                        <Setter Property="TextBlock.VerticalAlignment" Value="Bottom"></Setter>
+
+                    </Style>-->
+                </DataGrid.Resources>
+                <DataGrid.Columns >
+                    <DataGridTextColumn x:Name="No" Width="65" Header="ลำดับ" Binding="{Binding No}" />
+                    <DataGridTextColumn x:Name="DateTime" Width="150" Header="วัน / เวลา" Binding="{Binding DateTime, StringFormat='dd/MM/yyyy HH:mm:ss'}" />
+                    <DataGridTextColumn x:Name="machine_id" Width="70" Header="หัวจ่าย" Binding="{Binding machine_id}" />
+                    <DataGridTextColumn x:Name="standard_size" Width="80" Header="ขนาดถัง" Binding="{Binding standard_size}" />
+                    <DataGridTextColumn x:Name="scale_label" Width="90" Header="นน.ถังเปล่า" Binding="{Binding scale_label}" />
+                    <DataGridTextColumn x:Name="scale_tank" Width="85" Header="นน.ถังชั่ง" Binding="{Binding scale_tank}" />
+                    <DataGridTextColumn x:Name="scale_after" Width="85" Header="นน. สุทธิ" Binding="{Binding scale_after}" />
+                    <DataGridTextColumn x:Name="scale_fill" Width="90" Header="บรรจุ(กก.)" Binding="{Binding scale_fill}" />
+                    <DataGridTextColumn x:Name="scale_liter" Width="100" Header="บรรจุ(ลิตร)" Binding="{Binding scale_liter}" />
+                    <DataGridTextColumn x:Name="time_count" Width="100" Header="เวลาบรรจุ" Binding="{Binding time_count}" />
+                    <DataGridTextColumn x:Name="scale_drif" Width="100" Header="ผลต่าง(กก.)" Binding="{Binding scale_drif}" />
+                    <DataGridTextColumn x:Name="status" Width="210" Header="สถานะ" Binding="{Binding status}" />
+                    <DataGridTextColumn x:Name="user" Width="210" Header="ชื่อพนักงาน" Binding="{Binding user}" />
+                </DataGrid.Columns>
+            </DataGrid>
+            <StackPanel Margin="30,0,0,17" Orientation="Horizontal" VerticalAlignment="Bottom" Height="94" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}">
+                <StackPanel.BitmapEffect>
+                    <DropShadowBitmapEffect  Color="WhiteSmoke" ShadowDepth="1"/>
+                </StackPanel.BitmapEffect>
+                <TextBox x:Name="L_sum_count" 
+    Style="{StaticResource MaterialDesignFilledTextFieldTextBox}"
+    FontFamily="Serithai" FontSize="15" Margin="40,15,20,15"
+    AcceptsReturn="True"
+    TextWrapping="Wrap"
+    Text="-"
+    materialDesign:HintAssist.Hint="รวม (ครั้ง)"
+    IsEnabled="{Binding IsChecked, ElementName=MaterialDesignFilledTextFieldTextBoxEnabledComboBox}" IsReadOnlyCaretVisible="True" IsReadOnly="True" Width="108" Background="{x:Null}" BorderBrush="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" />
+                <TextBox x:Name="L_sum_kg" 
+                Style="{StaticResource MaterialDesignFilledTextFieldTextBox}"
+                FontFamily="Serithai" FontSize="15" Margin="20,15"
+                AcceptsReturn="True"
+                TextWrapping="Wrap"
+                Text="-"
+                materialDesign:HintAssist.Hint="น้ำหนัก (กิโลกรัม)"
+                IsEnabled="{Binding IsChecked, ElementName=MaterialDesignFilledTextFieldTextBoxEnabledComboBox}" IsReadOnlyCaretVisible="True" IsReadOnly="True" Background="{x:Null}" Width="163" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" />
+                <TextBox x:Name="L_sum_lite" 
+                Style="{StaticResource MaterialDesignFilledTextFieldTextBox}"
+                FontFamily="Serithai" FontSize="15" Margin="20,15,20,15"
+                AcceptsReturn="True"
+                TextWrapping="Wrap"
+                Text="-"
+                materialDesign:HintAssist.Hint="ปริมาตร (ลิตร)"
+                IsEnabled="{Binding IsChecked, ElementName=MaterialDesignFilledTextFieldTextBoxEnabledComboBox}" Height="64" IsReadOnlyCaretVisible="True" IsReadOnly="True" Background="{x:Null}" Width="163" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" />
+                <TextBox x:Name="L_sum_drif" 
+                    Style="{StaticResource MaterialDesignFilledTextFieldTextBox}"
+                    FontFamily="Serithai" FontSize="15" Margin="20,15,20,15"
+                    AcceptsReturn="True"
+                    TextWrapping="Wrap"
+                    Text="-"
+                    materialDesign:HintAssist.Hint="ผลต่าง (กิโลกรัม)"
+                    IsEnabled="{Binding IsChecked, ElementName=MaterialDesignFilledTextFieldTextBoxEnabledComboBox}" Height="64" IsReadOnlyCaretVisible="True" IsReadOnly="True" Background="{x:Null}" Width="163" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" BorderBrush="Black" />
+
+            </StackPanel>
+
+        </Grid>
+    </ScrollViewer>
+</UserControl>

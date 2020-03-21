@@ -78,5 +78,10 @@ namespace WpfApp_TWS
                 Mouse.Capture(null);
             }
         }
+
+        private void PickerDate1_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
+        }
     }
 }

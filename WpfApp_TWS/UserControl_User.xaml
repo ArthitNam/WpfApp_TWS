@@ -1,0 +1,130 @@
+﻿<UserControl x:Name="UserControl_User1" x:Class="WpfApp_TWS.UserControl_User"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfApp_TWS"
+             mc:Ignorable="d"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+             TextElement.FontWeight="Regular"
+             TextElement.FontSize="13"
+             TextOptions.TextFormattingMode="Ideal" 
+             TextOptions.TextRenderingMode="Auto"        
+             Background="{DynamicResource MaterialDesignPaper}"
+             FontFamily="{DynamicResource MaterialDesignFont}"
+             d:DesignHeight="800" d:DesignWidth="1130" Loaded="UserControl_User1_Loaded">
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+        <Grid Width="auto" Height="auto">
+            <Grid Margin="30,539,0,0" HorizontalAlignment="Left" Width="1065" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" Height="241" VerticalAlignment="Top">
+                <Grid.BitmapEffect>
+                    <DropShadowBitmapEffect  Color="WhiteSmoke" ShadowDepth="1"/>
+                </Grid.BitmapEffect>
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Left" Width="482" VerticalAlignment="Top" Height="238" Margin="0,0,0,-10">
+                    <TextBox x:Name="txt_Id"
+                        materialDesign:HintAssist.Hint="รหัสพนักงาน"
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                        VerticalAlignment="Top" Margin="10,10,0,0" Height="44" FontFamily="Serithai" FontSize="14" HorizontalAlignment="Left" Width="200" KeyDown="txt_Id_KeyDown" LostFocus="txt_Id_LostFocus"/>
+                    <TextBox x:Name="txt_Name"                        
+                    materialDesign:HintAssist.Hint="ชื่อ - นามสกุล"
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                    VerticalAlignment="Top" Margin="10,10,0,0" Height="44" FontFamily="Serithai" FontSize="14" HorizontalAlignment="Left" Width="462" KeyDown="txt_Name_KeyDown"/>
+                    <StackPanel Orientation="Horizontal" Margin="10,10,0,0" Height="44" VerticalAlignment="Center">
+                        <TextBlock Margin="10,10,0,0" FontFamily="Serithai" FontSize="14" HorizontalAlignment="Left" TextWrapping="Wrap" Text="ผู้ดูแลระบบ" VerticalAlignment="Top" Width="65"/>
+                        <ToggleButton x:Name="checkBox1"
+  Style="{StaticResource MaterialDesignSwitchToggleButton}"
+  ToolTip="Default ToggleButton Style" Margin="10,0,0,0" HorizontalAlignment="Left" Width="52" KeyDown="checkBox1_KeyDown" />
+
+                    </StackPanel>
+                    <TextBox x:Name="txt_UserName"
+                        materialDesign:HintAssist.Hint="ชื่อผู้ใช้"
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                        VerticalAlignment="Top" Margin="10,10,0,0" Height="44" FontFamily="Serithai" FontSize="14" HorizontalAlignment="Left" Width="462" KeyDown="txt_UserName_KeyDown"/>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Left" Width="433" VerticalAlignment="Top" Margin="487,0,0,-10" Height="238">
+                    <TextBox x:Name="txt_Fine"
+                        materialDesign:HintAssist.Hint="ค้นหา จากรหัสหรือชื่อ"
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                        VerticalAlignment="Top" Margin="0,10,10,0" Height="44" FontFamily="Serithai" FontSize="14" HorizontalAlignment="Right" Width="200" KeyDown="txt_Fine_KeyDown"/>
+                    <TextBox x:Name="txt_PassUser"
+                        materialDesign:HintAssist.Hint="รหัสผ่าน"
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                        VerticalAlignment="Top" Margin="10,10,0,0" Height="44" FontFamily="Serithai" FontSize="14" HorizontalAlignment="Left" Width="413" KeyDown="txt_PassUser_KeyDown"/>
+                    <TextBox x:Name="txt_Tel"
+                        materialDesign:HintAssist.Hint="โทรศัพท์"
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                        VerticalAlignment="Top" Margin="10,10,0,0" Height="44" FontFamily="Serithai" FontSize="14" HorizontalAlignment="Left" Width="413" KeyDown="txt_Tel_KeyDown"/>
+                    <TextBox x:Name="txt_Mail"
+                        materialDesign:HintAssist.Hint="อีเมล"
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                        VerticalAlignment="Top" Margin="10,10,0,10" Height="44" FontFamily="Serithai" FontSize="14" HorizontalAlignment="Left" Width="413" KeyDown="txt_Mail_KeyDown"/>
+
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Right" Height="228" Margin="0,0,10,0" VerticalAlignment="Top" Width="130">
+                    <Button x:Name="btn_Fine"
+                    Style="{StaticResource MaterialDesignRaisedButton}"
+                    ToolTip="ค้นหา" FontFamily="Serithai" Content="ค้นหา" Height="32" Margin="0,22,10,0" HorizontalAlignment="Right" Width="100" Click="btn_Fine_Click"/>
+                    <Button x:Name="btnReset"
+    Style="{StaticResource MaterialDesignRaisedLightButton}"
+    Width="100"
+    ToolTip="รีเซ็ต" FontFamily="Serithai" Margin="0,22,10,0" Content="รีเซ็ต" HorizontalAlignment="Right" Click="btnReset_Click"/>
+                    <Button x:Name="btn_Delete"
+    Style="{StaticResource MaterialDesignRaisedAccentButton}"
+    Width="100"
+    ToolTip="ลบ" FontFamily="Serithai" Margin="0,22,10,0" Content="ลบ" HorizontalAlignment="Right" Click="btn_Delete_Click"/>
+                    <Button x:Name="btn_Save"
+                    Style="{StaticResource MaterialDesignRaisedButton}"
+                    Width="100"
+                    ToolTip="บันทึก" FontFamily="Serithai" Content="บันทึก" Height="32" Margin="0,22,10,0" HorizontalAlignment="Right" Click="btn_Save_Click" KeyDown="btn_Save_KeyDown"/>
+                </StackPanel>
+            </Grid>
+            <Label Content="ข้อมูลผู้ใช้" HorizontalAlignment="Left" Margin="30,10,0,0" VerticalAlignment="Top" FontFamily="Serithai" FontSize="18" Height="40"/>
+            <DockPanel Height="1" LastChildFill="False" Margin="30,45,0,0" VerticalAlignment="Top" Background="{DynamicResource {x:Static SystemColors.ScrollBarBrushKey}}" HorizontalAlignment="Left" Width="1065"/>
+            <DataGrid x:Name="dataG_User" AutoGenerateColumns="False" ItemsSource="{Binding}" ColumnHeaderHeight="55" Margin="30,55,0,0" FontSize="14" FontFamily="Serithai" Foreground="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}"  Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" CanUserResizeRows="False" IsReadOnly="True" MinColumnWidth="19" CanUserResizeColumns="False" CanUserSortColumns="False" CanUserReorderColumns="False" AlternationCount="1" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto" RowHeight="35" GridLinesVisibility="Horizontal" ScrollViewer.CanContentScroll="False" HorizontalAlignment="Left" Width="auto" SelectedCellsChanged="dataG_User_SelectedCellsChanged" Height="468" VerticalAlignment="Top" >
+                <DataGrid.Resources>
+                    <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}" >
+                        <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}"/>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="FontSize" Value="14"/>
+                        <Setter Property="FontFamily" Value="Serithai"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        <Setter Property="BorderThickness" Value="0"/>
+                    </Style>
+                    <Style x:Key="DataGridVerticalText" TargetType="{x:Type TextBlock}">
+                        <Setter Property="VerticalAlignment" Value="Center" />
+                    </Style>
+                </DataGrid.Resources>
+
+                <DataGrid.BitmapEffect>
+                    <DropShadowBitmapEffect  Color="WhiteSmoke" ShadowDepth="1"/>
+                </DataGrid.BitmapEffect>
+
+                <DataGrid.CellStyle>
+                    <Style TargetType="{x:Type DataGridCell}">
+                        <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+                        <Setter Property="FontFamily" Value="Roboto"/>
+                        <Setter Property="FontSize" Value="13"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type DataGridCell}">
+                                    <Grid Background="{TemplateBinding Background}">
+                                        <ContentPresenter VerticalAlignment="Center"/>
+                                    </Grid>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </DataGrid.CellStyle>
+                <DataGrid.Columns >
+                    <DataGridTextColumn x:Name="No" Width="65" Header="รหัส" Binding="{Binding Id}" />
+                    <DataGridTextColumn x:Name="DateTime" Width="240" Header="ชื่อ - นามสกุล" Binding="{Binding Name}" />
+                    <DataGridTextColumn x:Name="machine_id" Width="120" Header="สถานะ" Binding="{Binding Department}" />
+                    <DataGridTextColumn x:Name="standard_size" Width="160" Header="ชื่อผู้ใช้" Binding="{Binding User_login}" />
+                    <DataGridTextColumn x:Name="scale_label" Width="160" Header="รหัสผ่าน" Binding="{Binding Password_login}" />
+                    <DataGridTextColumn x:Name="scale_tank" Width="120" Header="โทรศัพท์" Binding="{Binding Telephone}" />
+                    <DataGridTextColumn x:Name="scale_after" Width="200" Header="อีเมล" Binding="{Binding Email}" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+    </ScrollViewer>
+</UserControl>
